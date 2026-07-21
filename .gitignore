@@ -1,0 +1,29 @@
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Editores / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependências (caso venham a ser usadas)
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Variáveis de ambiente / segredos
+.env
+.env.local
+.env.*.local
+
+# Arquivos temporários
+*.tmp
+*.bak
+*~
+
+# Claude Code (config local, não deve ir para o deploy)
+.claude/settings.local.json
