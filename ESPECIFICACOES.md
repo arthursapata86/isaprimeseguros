@@ -128,7 +128,7 @@ O botão flutuante de WhatsApp é `position: fixed` e permanece acessível em qu
 - `robots.txt` e `sitemap.xml` na raiz, referenciando o domínio de produção.
 - `width`/`height` explícitos (`1254x1254`, proporção real do arquivo) nas três instâncias de `assets/logo.jpg`, para evitar layout shift (Core Web Vitals); logo do footer usa `loading="lazy"` por estar abaixo da dobra.
 - Conteúdo do body (hero, sobre, contato) passou a citar "São Caetano do Sul" e "Grande São Paulo" explicitamente — antes era uma decisão deliberada não citar região (ver spec de design), revertida a pedido do cliente para otimizar buscas locais.
-- Favicon aponta para `assets/logo.jpg`.
+- Favicon e `apple-touch-icon` apontam para `assets/logo.jpg`.
 
 **Domínio de produção confirmado**: `www.isaprimeseguros.com.br` é o domínio real, confirmado pelo cliente (ver `docs/superpowers/specs/2026-08-05-finalizar-seo-design.md`). Todas as URLs absolutas (canonical, `og:url`, `og:image`, `twitter:image`, `robots.txt`, `sitemap.xml`) já usam esse valor. Ainda pendente, fora do código: assim que o site for publicado nesse domínio, submeter ao Google Search Console e enviar o `sitemap.xml`.
 
