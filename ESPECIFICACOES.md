@@ -130,7 +130,7 @@ O botão flutuante de WhatsApp é `position: fixed` e permanece acessível em qu
 - Conteúdo do body (hero, sobre, contato) passou a citar "São Caetano do Sul" e "Grande São Paulo" explicitamente — antes era uma decisão deliberada não citar região (ver spec de design), revertida a pedido do cliente para otimizar buscas locais.
 - Favicon aponta para `assets/logo.jpg`.
 
-**⚠️ Pendência crítica**: o domínio de produção ainda não existe. Todas as URLs absolutas (canonical, `og:url`, `og:image`, `twitter:image`, `robots.txt`, `sitemap.xml`) usam `https://www.isaprimeseguros.com.br/` como placeholder, inferido do domínio já usado no e-mail de contato. Há um comentário `TODO` logo no `<head>` de `index.html` marcando isso. **Assim que o domínio real for registrado/confirmado, é preciso**: (1) confirmar ou corrigir esse valor em todos os arquivos citados, e (2) submeter o site ao Google Search Console e enviar o `sitemap.xml`.
+**Domínio de produção confirmado**: `www.isaprimeseguros.com.br` é o domínio real, confirmado pelo cliente (ver `docs/superpowers/specs/2026-08-05-finalizar-seo-design.md`). Todas as URLs absolutas (canonical, `og:url`, `og:image`, `twitter:image`, `robots.txt`, `sitemap.xml`) já usam esse valor. Ainda pendente, fora do código: assim que o site for publicado nesse domínio, submeter ao Google Search Console e enviar o `sitemap.xml`.
 
 ## 9. Itens pendentes / placeholders a substituir antes do lançamento definitivo
 
