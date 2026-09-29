@@ -25,6 +25,7 @@ Site institucional de página única (one-page) para **ISA Prime — Corretora d
 | `style.css` | Estilos globais, componentes e responsividade (custom properties em `:root`). |
 | `script.js` | Comportamento: menu mobile, links de WhatsApp com mensagem pré-preenchida, envio do formulário de contato. |
 | `assets/logo.jpg` | Logo da marca, usada no header, hero e footer. |
+| `assets/logos_seguradoras/` | Logos das operadoras exibidos na seção Seguradoras (§4.5). |
 | `referencia.jpg` | Imagem de referência da identidade visual (não usada em runtime, é insumo de design). |
 | `robots.txt` | Libera indexação total e aponta para o `sitemap.xml`. |
 | `sitemap.xml` | Sitemap com a única URL do site (página única). |
@@ -51,7 +52,7 @@ Definida em `:root` de `style.css` via custom properties:
 
 ## 4. Estrutura da página e conteúdo
 
-Navegação por âncoras: Sobre, Produtos, Diferenciais, Depoimentos, Contato.
+Navegação por âncoras: Sobre, Produtos, Seguradoras, Diferenciais, Depoimentos, Contato.
 
 ### 4.1 Header (`.site-header`, fixo/sticky)
 Logo circular + navegação por âncora + botão "Falar no WhatsApp". Em mobile, menu hambúrguer (`#nav-toggle`) que abre `#site-nav` como painel fixo.
@@ -68,25 +69,34 @@ Bio de Ithalo Sapata Alves (texto placeholder profissional) + badges ("Atendimen
 - **Saúde e Previdência**
 - **Capitalização**
 
-### 4.5 Diferenciais (`#diferenciais`)
+### 4.5 Seguradoras (`#seguradoras`)
+Roster das **47 operadoras** da carteira, agrupado em três blocos com a contagem ao lado do título: **Saúde (30)**, **Odontológico (13)** e **Vida e seguros (4)**. Cada item é um tile branco chapado (borda de 1px, raio 10px, sem sombra e sem hover) com o logo e o **nome da operadora em texto**.
+
+O nome em texto não é redundância: os arquivos de logo são pequenos (38 dos 47 têm 140×70 px), então a marca é exibida pequena para não borrar — a legenda garante leitura, permite ao visitante procurar a própria operadora e coloca 47 nomes de marca como texto indexável. Por isso os `<img>` usam `alt=""` (o nome visível já cumpre o papel, e o alt duplicaria o anúncio em leitor de tela).
+
+Tiles deliberadamente mais discretos que os cards de Produtos/Depoimentos (sem sombra, raio menor, sem hover): logos são prova de apoio, não features. Fecha com uma linha convidando quem não achou a operadora a perguntar no WhatsApp.
+
+Grade responsiva via `auto-fill`: 8 colunas no desktop (container de 1140px), 5 em ~768px, 3 de 375px para cima, 2 em 320px.
+
+### 4.6 Diferenciais (`#diferenciais`)
 Faixa de fundo navy com 4 itens (ícone + título + texto curto), espelhando os 4 pilares da logo:
 - Seguros
 - Documentação
 - Soluções Financeiras
 - Confiança que Gera Valor
 
-### 4.6 Depoimentos (`#depoimentos`)
+### 4.7 Depoimentos (`#depoimentos`)
 3 cards com 5 estrelas, texto e nome **placeholder** (`[Depoimento do cliente aqui — substitua por um relato real.]`, "Nome do Cliente") — precisam ser substituídos por depoimentos reais antes de publicar oficialmente com essa seção visível.
 
-### 4.7 Contato (`#contato`)
+### 4.8 Contato (`#contato`)
 Duas colunas:
 - **Lista de contato direto**: WhatsApp, e-mail (`contato@isaprimeseguros.com.br`), Instagram (`@isaprimeseguros`).
 - **Formulário** (`#contato-form`): campos Nome, Telefone, Interesse (select: Seguro de Vida / Saúde e Previdência / Capitalização / Outro assunto), Mensagem (opcional). Botão "Enviar pelo WhatsApp".
 
-### 4.8 Footer (`.site-footer`)
+### 4.9 Footer (`.site-footer`)
 Logo, nome da marca, links de navegação, ícones sociais (WhatsApp, e-mail, Instagram), copyright "© 2026 ISA Prime Seguros".
 
-### 4.9 Botão flutuante de WhatsApp
+### 4.10 Botão flutuante de WhatsApp
 Fixo no canto inferior direito (`.whatsapp-float`), visível em todas as seções, cor oficial do WhatsApp (`#25D366`).
 
 ## 5. Dados de contato (fonte da verdade)
@@ -130,15 +140,31 @@ O botão flutuante de WhatsApp é `position: fixed` e permanece acessível em qu
 - Conteúdo do body (hero, sobre, contato) passou a citar "São Caetano do Sul" e "Grande São Paulo" explicitamente — antes era uma decisão deliberada não citar região (ver spec de design), revertida a pedido do cliente para otimizar buscas locais.
 - Favicon e `apple-touch-icon` apontam para `assets/logo.jpg`.
 
-**Domínio de produção confirmado**: `www.isaprimeseguros.com.br` é o domínio real, confirmado pelo cliente (ver `docs/superpowers/specs/2026-08-05-finalizar-seo-design.md`). Todas as URLs absolutas (canonical, `og:url`, `og:image`, `twitter:image`, `robots.txt`, `sitemap.xml`) já usam esse valor. Ainda pendente, fora do código: assim que o site for publicado nesse domínio, submeter ao Google Search Console e enviar o `sitemap.xml`.
+**Domínio de produção confirmado**: `www.isaprimeseguros.com.br` é o domínio real, confirmado pelo cliente (ver `docs/superpowers/specs/2026-08-05-finalizar-seo-design.md`). Todas as URLs absolutas (canonical, `og:url`, `og:image`, `twitter:image`, `robots.txt`, `sitemap.xml`) já usam esse valor. Passos pendentes de publicação estão listados na seção 9.2.
 
 ## 9. Itens pendentes / placeholders a substituir antes do lançamento definitivo
+
+### 9.1 Conteúdo
 
 Estes pontos já estão sinalizados no HTML/spec de design, mas ainda não foram resolvidos com conteúdo real:
 
 1. **Foto de Ithalo Sapata Alves** — seção Sobre usa um ícone de silhueta em vez de foto real.
 2. **Bio completa** — texto atual da seção Sobre é um placeholder profissional; falta anos de experiência, credenciais e dados reais.
 3. **Depoimentos reais** — os 3 cards de depoimentos têm texto e nomes fictícios/placeholder.
+4. **Logo da Sompo em versão branca** — o arquivo entregue (`Logo_Sompo_White.png`) é branco e sumiria no fundo claro. Está sendo escurecido por CSS (`.seguradora__logo--clara`, `filter: brightness(0)`) como paliativo: pedir à seguradora a versão colorida/positiva e remover o filtro.
+5. **Logo da Alice com fundo lilás chapado** — o JPEG tem fundo `#f5f0f5` em vez de branco, então aparece como um retângulo dentro do tile. Substituir por PNG com fundo transparente.
+6. **Arquivos duplicados em `assets/logos_seguradoras/`** — `logo_header.png` (é a Hapvida de novo), `medtour (1).png` e `careplusodonto.png` (byte-idêntico a `careplussade.png`) não são referenciados por nada e podem ser apagados. Os 10 arquivos com espaço/maiúscula no nome funcionam via URL-encoding, mas convém padronizar em kebab-case.
+7. **Autorização de uso das marcas** — exibir o logo de uma seguradora sugere relação comercial. Confirmar com cada operadora que há autorização de representação antes de manter a seção pública.
+
+### 9.2 SEO pós-publicação
+
+Nenhum destes itens é código — dependem do site estar publicado no domínio final (`www.isaprimeseguros.com.br`):
+
+1. **Google Search Console** — verificar a propriedade do domínio e enviar o `sitemap.xml`.
+2. **Google Rich Results Test** — validar se os dados estruturados JSON-LD (`InsuranceAgency`, seção 8) são lidos corretamente pelo Google.
+3. **Facebook Sharing Debugger / preview do WhatsApp** — conferir que `og:image` (a logo) aparece corretamente ao compartilhar o link.
+4. **Bing Webmaster Tools** (opcional) — pode importar a verificação direto do Google Search Console.
+5. **Perfil da Empresa no Google** (Google Meu Negócio) — ainda não existe. Fora do escopo do spec de SEO original (`docs/superpowers/specs/2026-08-05-finalizar-seo-design.md`), mas recomendado: para corretor de seguros com atuação local (São Caetano do Sul / Grande SP), costuma pesar mais no ranqueamento de busca local do que ajustes on-page.
 
 Fora de escopo (decisão deliberada, não pendência): integração com serviço de formulário (Formspree/Web3Forms), seção de FAQ, números de credibilidade, menção a cidade/região.
 
