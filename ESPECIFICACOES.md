@@ -177,6 +177,19 @@ python3 -m http.server 8000
 # depois acessar http://localhost:8000
 ```
 
+## 10.1 Cache de assets (IMPORTANTE ao alterar CSS/JS)
+
+O host serve `style.css` e `script.js` com `cache-control: public, max-age=604800` (7 dias, sem revalidação), enquanto o `index.html` não tem `cache-control` e revalida por etag. Sem cuidado, isso quebra o site para visitantes recorrentes: eles recebem o **HTML novo com o CSS antigo** e veem a página sem estilo.
+
+Por isso os links são versionados:
+
+```html
+<link rel="stylesheet" href="style.css?v=20260929">
+<script src="script.js?v=20260929"></script>
+```
+
+**Sempre que alterar `style.css` ou `script.js`, incremente o `?v=` nos dois pontos do `index.html`** (a data do deploy serve como valor). Como o HTML revalida, a URL nova nunca está em cache e o asset atualizado chega na hora.
+
 ## 11. Deploy
 
 Repositório com um único commit até o momento (`c56f352 — primeiro deploy`). Por ser um site 100% estático, pode ser publicado em qualquer host de arquivos estáticos (Vercel, Netlify, GitHub Pages, Hostinger etc.) sem configuração de build.
