@@ -70,9 +70,9 @@ Bio de Ithalo Sapata Alves (texto placeholder profissional) + badges ("Atendimen
 - **Capitalização**
 
 ### 4.5 Seguradoras (`#seguradoras`)
-Roster das **47 operadoras** da carteira, agrupado em três blocos com a contagem ao lado do título: **Saúde (30)**, **Odontológico (13)** e **Vida e seguros (4)**. Cada item é um tile branco chapado (borda de 1px, raio 10px, sem sombra e sem hover) com o logo e o **nome da operadora em texto**.
+Roster das **48 operadoras** da carteira, agrupado em três blocos com a contagem ao lado do título: **Saúde (30)**, **Odontológico (13)** e **Vida e seguros (5)**. Cada item é um tile branco chapado (borda de 1px, raio 10px, sem sombra e sem hover) com o logo e o **nome da operadora em texto**.
 
-O nome em texto não é redundância: os arquivos de logo são pequenos (38 dos 47 têm 140×70 px), então a marca é exibida pequena para não borrar — a legenda garante leitura, permite ao visitante procurar a própria operadora e coloca 47 nomes de marca como texto indexável. Por isso os `<img>` usam `alt=""` (o nome visível já cumpre o papel, e o alt duplicaria o anúncio em leitor de tela).
+O nome em texto não é redundância: os arquivos de logo são pequenos (38 dos 48 têm 140×70 px), então a marca é exibida pequena para não borrar — a legenda garante leitura, permite ao visitante procurar a própria operadora e coloca 48 nomes de marca como texto indexável. Dois logos precisam de tratamento próprio: a Sompo veio em versão branca (escurecida por `.seguradora__logo--clara`) e a Azos veio com margem branca enorme no próprio arquivo — a marca ocupa só 20% da altura (138×29 num canvas de 162×148) e renderizaria a 9px. Como a arte está centralizada e o fundo do arquivo é branco igual ao do tile, `.seguradora__logo--compacto` usa `object-fit: cover` para recortar a sobra. Por isso os `<img>` usam `alt=""` (o nome visível já cumpre o papel, e o alt duplicaria o anúncio em leitor de tela).
 
 Tiles deliberadamente mais discretos que os cards de Produtos/Depoimentos (sem sombra, raio menor, sem hover): logos são prova de apoio, não features. Fecha com uma linha convidando quem não achou a operadora a perguntar no WhatsApp.
 

@@ -418,6 +418,7 @@ section {
   justify-content: center;
   width: 100%;
   height: 44px;
+  overflow: hidden;
 }
 
 .seguradora__logo {
@@ -426,6 +427,18 @@ section {
   max-width: 100%;
   max-height: 44px;
   object-fit: contain;
+}
+
+/* Logo entregue com muita margem branca no proprio arquivo (na Azos a marca
+   ocupa so 20% da altura: 138x29 num canvas de 162x148), o que faria ela
+   renderizar a ~9px de altura com `contain`. Como a arte esta centralizada e
+   o fundo do arquivo e branco igual ao do tile, o `cover` recorta a sobra e a
+   marca fica do tamanho das vizinhas. Depende de o tile ser mais largo que
+   alto, o que vale em todos os breakpoints. */
+.seguradora__logo--compacto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Logo entregue em versao branca: escurecido para aparecer no fundo claro.
